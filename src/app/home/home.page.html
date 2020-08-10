@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title class="header-title">
+      Ionic Calendar
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCalModal()">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment class="top-title-wrapper" [(ngModel)]="calendar.mode">
+    <ion-segment-button class="btn-date" value="week">
+      <ion-label>Неделя</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="btn-date" value="day">
+      <ion-label>Сегодня</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="btn-date" value="month">
+      <ion-label>Месяц</ion-label>
+    </ion-segment-button>
+
+
+  </ion-segment>
+
+  <ion-row class="month-title-arrow-btns">
+    <!-- Move back one screen of the slides -->
+    <ion-col class="col-arrow-btn">
+      <ion-button class="arrow-btn btn-back" (click)="back()">
+      </ion-button>
+    </ion-col>
+
+    <ion-col class="month-title">
+      <h2>{{ viewTitle }}</h2>
+    </ion-col>
+
+    <!-- Move forward one screen of the slides -->
+    <ion-col>
+      <ion-button class="arrow-btn" (click)="next()">
+
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" startHour="6" endHour="20"
+    step="30" startingDayWeek="1">
+  </calendar>
+</ion-content>
+
+<ion-row class="add-delete-btn-wrapper">
+  <ion-col size="6">
+    <ion-button (click)="removeEvents()" expand="block" fill="outline">
+      Remove all events
+    </ion-button>
+  </ion-col>
+  <ion-col class="add-event-wrapper" size="6">
+    <ion-button class="add-event" (click)="createRandomEvents()" fill="outline">
+      +
+    </ion-button>
+  </ion-col>
+</ion-row>

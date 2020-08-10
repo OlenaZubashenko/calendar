@@ -1,0 +1,106 @@
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.top-title-wrapper {
+  border-radius: 5px;
+  width: 90%;
+  margin: 10px auto;
+
+  .segment-button-checked {
+    padding: 5px;
+    border-radius: 5px;
+    --ion-background-color: rgb(0, 0, 0);
+    --border-width: 0px;
+    // --border-radius: 0px;
+    --color-checked: rgb(255, 255, 255);
+  }
+}
+
+.month-title-arrow-btns {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+
+  .month-title h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  ion-col .col-arrow-btn.ios.hydrated {
+    width: 20px;
+  }
+
+  .arrow-btn {
+    background: url(../../img/slider-arrow-icon.png) no-repeat;
+    --background: none;
+    background-size: contain;
+    width: 10px;
+    height: 10px;
+  }
+  .button-solid,
+  .ion-activatable,
+  .ion-focusable,
+  .hydrated {
+    display: flex;
+    justify-content: center;
+    --background-activated: #ffffff;
+    --background-focused: #ffffff;
+    --background-hover: #ffffff;
+  }
+
+  .btn-back {
+    transform: rotate(180deg);
+  }
+}
+
+.add-delete-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  margin: 0 auto;
+
+  .add-event-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .add-event {
+    font-size: 30px;
+    font-weight: 100;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background: black;
+    width: 45px;
+    height: 45px;
+    --padding: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    --border-color: none;
+  }
+}
