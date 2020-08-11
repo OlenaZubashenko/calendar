@@ -30,11 +30,22 @@
 
   .segment-button-checked {
     padding: 5px;
-    border-radius: 5px;
+    --border-radius: 0px;
     --ion-background-color: rgb(0, 0, 0);
     --border-width: 0px;
-    // --border-radius: 0px;
     --color-checked: rgb(255, 255, 255);
+  }
+
+  .segment-button-checked:first-child {
+    --border-radius: 5px 0 0 5px;
+  }
+
+  .segment-button-checked:nth-child(2n) {
+    --border-radius: 0;
+  }
+
+  .segment-button-checked:nth-child(3n) {
+    --border-radius: 0 5px 5px 0;
   }
 }
 
