@@ -13,7 +13,9 @@
 
 <ion-content>
   <ion-segment class="top-title-wrapper" [(ngModel)]="calendar.mode">
-    <ion-segment-button class="btn-date" value="week">
+    <!-- to show week - need to be uncommented -->
+    <!-- <ion-segment-button class="btn-date" value="week"> -->
+    <ion-segment-button class="btn-date">
       <ion-label>Неделя</ion-label>
     </ion-segment-button>
     <ion-segment-button class="btn-date" value="day">
@@ -22,8 +24,6 @@
     <ion-segment-button class="btn-date" value="month">
       <ion-label>Месяц</ion-label>
     </ion-segment-button>
-
-
   </ion-segment>
 
   <ion-row class="month-title-arrow-btns">
@@ -44,10 +44,16 @@
       </ion-button>
     </ion-col>
   </ion-row>
-
-  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-    (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" startHour="6" endHour="20"
-    step="30" startingDayWeek="1">
+  <ng-template #template let-view="view" let-row="row" let-col="col">
+    <!-- <div class="event-gradient"
+      class="opacity-{{getGradient(view.dates[row*7+col].events)}}"> -->
+    <div class="event-gradient" [ngStyle]="{'background-color': 'rgba(0,0,0,' + getAlpha(view.dates[row*7+col].events) + ')'}">
+      {{view.dates[row*7+col].label}}
+    </div>
+  </ng-template>
+  <calendar [monthviewDisplayEventTemplate]="template" [eventSource]="eventSource" [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)" startHour="6" endHour="20" step="30" startingDayWeek="1">
   </calendar>
 </ion-content>
 

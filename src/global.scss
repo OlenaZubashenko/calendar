@@ -39,29 +39,31 @@ table {
         color: rgb(196, 193, 193);
         text-transform: capitalize;
         border-top: 1px solid grey;
-        th {
-            border: none !important;
-        }
+    }
+    th,
+    td {
+        border: none !important;
     }
 
     tbody {
         tr {
             td {
-                border-radius: 8px;
+                //border-radius: 8px !important;
                 background-color: rgb(252, 252, 252);
                 line-height: 27px !important;
+                padding: 0 !important;
+                margin: 0;
 
-                .monthview-selected .monthview-current {
-                    background-color: #beda25 !important;
-                    color: rgb(182, 47, 47) !important;
+                .event-gradient {
+                    border-radius: 8px;
+                    //background-color: black;
+                    width: 100%;
+                    padding: 8px;
                 }
             }
-            
         }
     }
 }
-
-
 
 //shows how many events we've got
 ion-list {
@@ -70,12 +72,11 @@ ion-list {
 }
 
 .monthview-primary-with-event {
-    background-color: #3d3c3c !important;
+    background-color: rgba(0,0,0,0) !important;
     color: white;
 }
 
-
 .monthview-secondary-with-event {
-    background-color: #a1a1a1 !important;
+    background-color:  rgba(0,0,0,0) !important;
     color: white !important;
 }

@@ -3,7 +3,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { CalendarComponent } from 'ionic2-calendar';
 //import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
- 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,44 +12,44 @@ import { CalendarComponent } from 'ionic2-calendar';
 export class HomePage implements OnInit {
   eventSource = [];
   viewTitle: string;
- 
+
   calendar = {
     mode: 'month',
     currentDate: new Date(),
   };
- 
+
   selectedDate: Date;
- 
+
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
- 
+
   constructor(
     private alertCtrl: AlertController,
     @Inject(LOCALE_ID) private locale: string,
     private modalCtrl: ModalController
-  ) {}
- 
-  ngOnInit() {}
- 
+  ) { }
+
+  ngOnInit() { }
+
   // Change current month/week/day
   next() {
     this.myCal.slideNext();
   }
- 
+
   back() {
     this.myCal.slidePrev();
   }
- 
+
   // Selected date reange and hence title changed
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
- 
+
   // Calendar event was clicked
   async onEventSelected(event) {
     // Use Angular date pipe for conversion
     let start = formatDate(event.startTime, 'medium', this.locale);
     let end = formatDate(event.endTime, 'medium', this.locale);
- 
+
     const alert = await this.alertCtrl.create({
       header: event.title,
       subHeader: event.desc,
@@ -58,7 +58,9 @@ export class HomePage implements OnInit {
     });
     alert.present();
   }
- 
+  getAlpha(events) {
+    return events.length / 10;
+  }
   createRandomEvents() {
     var events = [];
     for (var i = 0; i < 50; i += 1) {
@@ -115,13 +117,19 @@ export class HomePage implements OnInit {
           endTime: endTime,
           allDay: false,
         });
+        events.push({
+          title: 'Event - ' + i,
+          startTime: startTime,
+          endTime: endTime,
+          allDay: false,
+        });
       }
     }
     this.eventSource = events;
   }
- 
+
   removeEvents() {
     this.eventSource = [];
   }
- 
+
 }
